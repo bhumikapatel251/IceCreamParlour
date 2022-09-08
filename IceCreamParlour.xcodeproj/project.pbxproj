@@ -14,6 +14,9 @@
 		AC2F460D28C9C92900C61617 /* IceCreamParlourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F460C28C9C92900C61617 /* IceCreamParlourTests.swift */; };
 		AC2F461728C9C92900C61617 /* IceCreamParlourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F461628C9C92900C61617 /* IceCreamParlourUITests.swift */; };
 		AC2F461928C9C92900C61617 /* IceCreamParlourUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F461828C9C92900C61617 /* IceCreamParlourUITestsLaunchTests.swift */; };
+		AC2F462628C9C96900C61617 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F462528C9C96900C61617 /* Home.swift */; };
+		AC2F462928C9CC4B00C61617 /* MilkShake.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F462828C9CC4B00C61617 /* MilkShake.swift */; };
+		AC4A229628C9FE800069F632 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4A229528C9FE800069F632 /* Tab.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		AC2F461228C9C92900C61617 /* IceCreamParlourUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IceCreamParlourUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC2F461628C9C92900C61617 /* IceCreamParlourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamParlourUITests.swift; sourceTree = "<group>"; };
 		AC2F461828C9C92900C61617 /* IceCreamParlourUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamParlourUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AC2F462528C9C96900C61617 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		AC2F462828C9CC4B00C61617 /* MilkShake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilkShake.swift; sourceTree = "<group>"; };
+		AC4A229528C9FE800069F632 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,8 @@
 		AC2F45FA28C9C92700C61617 /* IceCreamParlour */ = {
 			isa = PBXGroup;
 			children = (
+				AC4A229728C9FFDA0069F632 /* View */,
+				AC2F462728C9CC2D00C61617 /* Model */,
 				AC2F45FB28C9C92700C61617 /* IceCreamParlourApp.swift */,
 				AC2F45FD28C9C92700C61617 /* ContentView.swift */,
 				AC2F45FF28C9C92900C61617 /* Assets.xcassets */,
@@ -125,6 +133,23 @@
 				AC2F461828C9C92900C61617 /* IceCreamParlourUITestsLaunchTests.swift */,
 			);
 			path = IceCreamParlourUITests;
+			sourceTree = "<group>";
+		};
+		AC2F462728C9CC2D00C61617 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC2F462828C9CC4B00C61617 /* MilkShake.swift */,
+				AC4A229528C9FE800069F632 /* Tab.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC4A229728C9FFDA0069F632 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC2F462528C9C96900C61617 /* Home.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +283,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC2F45FE28C9C92700C61617 /* ContentView.swift in Sources */,
+				AC2F462628C9C96900C61617 /* Home.swift in Sources */,
+				AC4A229628C9FE800069F632 /* Tab.swift in Sources */,
 				AC2F45FC28C9C92700C61617 /* IceCreamParlourApp.swift in Sources */,
+				AC2F462928C9CC4B00C61617 /* MilkShake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
