@@ -14,6 +14,15 @@ struct Home: View {
             background.ignoresSafeArea()
             VStack{
                 HeaderView()
+                //AttributedText
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(attributedTitle)
+                        .font(.largeTitle).bold()
+                    Text(attributedSubTitle)
+                        .font(.largeTitle).bold()
+                }
+                .padding(.horizontal,15)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
           
@@ -59,6 +68,20 @@ struct Home: View {
             }
         }
         .padding(15)
+    }
+    var attributedTitle: AttributedString{
+        var attString = AttributedString(stringLiteral: "Good Food,")
+        if let rang = attString.range(of: "Food,"){
+            attString[rang].foregroundColor = .white
+        }
+        return attString
+    }
+    var attributedSubTitle: AttributedString{
+        var attString = AttributedString(stringLiteral: "Good Mood.")
+        if let rang = attString.range(of: "Good"){
+            attString[rang].foregroundColor = .white
+        }
+        return attString
     }
     var background: some View {
         ZStack{
