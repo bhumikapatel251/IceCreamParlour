@@ -27,11 +27,19 @@ struct Home: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 35, height: 35)
                         .clipShape(Circle())
-                    Text("Roy")
+                    Text("Frenk Leng")
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(.black)
                 }
+                .padding(.leading,8)
+                .padding(.horizontal,12)
+                .padding(.vertical,6)
+                .background{
+                    Capsule()
+                        .fill(Color("G1"))
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
     var background: some View {
