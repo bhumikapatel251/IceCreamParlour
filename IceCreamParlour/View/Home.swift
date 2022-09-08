@@ -27,7 +27,9 @@ struct Home: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 35, height: 35)
                         .clipShape(Circle())
-                    
+                    Text("Roy")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.black)
                 }
             }
         }
