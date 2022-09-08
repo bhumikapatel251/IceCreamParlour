@@ -11,6 +11,25 @@ struct Home: View {
     var body: some View {
         ZStack{
             background.ignoresSafeArea()
+            
+            HeaderView()
+        }
+    }
+    @ViewBuilder
+    func HeaderView()->some View{
+        HStack{
+            Button{
+                
+            } label: {
+                HStack(spacing: 10){
+                    Image("Pic")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 35, height: 35)
+                        .clipShape(Circle())
+                    
+                }
+            }
         }
     }
     var background: some View {
