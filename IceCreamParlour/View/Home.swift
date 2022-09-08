@@ -10,9 +10,13 @@ import SwiftUI
 struct Home: View {
     var body: some View {
         ZStack{
+           
             background.ignoresSafeArea()
-            
-            HeaderView()
+            VStack{
+                HeaderView()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+          
         }
     }
     @ViewBuilder
@@ -54,6 +58,7 @@ struct Home: View {
                     }
             }
         }
+        .padding(15)
     }
     var background: some View {
         ZStack{
