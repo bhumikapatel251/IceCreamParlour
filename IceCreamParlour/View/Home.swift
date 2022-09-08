@@ -40,6 +40,19 @@ struct Home: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            Button{
+                
+            } label: {
+                Image(systemName: "cart")
+                    .font(.title2)
+                    .foregroundColor(.black)
+                    .overlay(alignment: .topTrailing){
+                        Circle()
+                            .fill(.red)
+                            .frame(width: 10, height: 10)
+                            .offset(x:2, y:-5)
+                    }
+            }
         }
     }
     var background: some View {
