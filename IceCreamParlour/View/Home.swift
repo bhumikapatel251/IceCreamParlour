@@ -11,6 +11,7 @@ struct Home: View {
     //MARK: View Property
     @State var currentIndex: Int = 0
     @Namespace var animation
+    @State var currentTab: Tab = tabs[1]
     var body: some View {
         ZStack{
            
@@ -97,6 +98,12 @@ struct Home: View {
                     }
                 //MARK: I already pre-defined the offsets to make them look like Circular
                     .offset(tab.tabOffset)
+                    .scaleEffect(currentTab.id == tab.id ? 1.15 : 0.9, anchor: .bottom)
+                    .onTapGesture {
+                        withAnimation(.easeInOut){
+                            currentTab = tab
+                        }
+                    }
             }
            
         }
