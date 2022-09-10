@@ -60,7 +60,7 @@ struct Home: View {
                     Text(milkshake.price)
                         .font(.callout)
                         .fontWeight(.black)
-                        .foregroundColor(Color("G1"))
+                        .foregroundColor(Color("G2"))
                 }
                 
             }
@@ -72,6 +72,9 @@ struct Home: View {
         //MARK: Custom Arc background
         .background{
            CustomArcShape()
+                .fill(Color.white)
+                .padding(.top,40)
+                .ignoresSafeArea()
         }
     }
     //MARK: Indicator
@@ -80,12 +83,12 @@ struct Home: View {
         HStack(spacing: 2){
             ForEach(milkShakes.indices,id: \.self){index in
                 Circle()
-                    .fill(Color("G1"))
+                    .fill(Color("G2"))
                     .frame(width: currentIndex == index ? 10 : 6, height: currentIndex == index ? 10 : 6)
                     .padding(4)
                     .background{
                         if currentIndex == index{
-                            Circle().stroke(Color("G1"),lineWidth: 1)
+                            Circle().stroke(Color("G2"),lineWidth: 1)
                                 .matchedGeometryEffect(id: "INDICATOR", in: animation)
                         }
                     }
