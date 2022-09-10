@@ -49,8 +49,8 @@ struct Home: View {
                         .background{
                             RoundedRectangle(cornerRadius: size.height / 10, style: .continuous)
                                 .fill(Color("G1"))
-                                .padding(.top,40)
-                                .padding(.horizontal,-40)
+                                .padding(.top,0)
+                                .padding(.horizontal,-0)
                                 .offset(y: -10)
                         }
                     Text(milkshake.title)
@@ -62,6 +62,19 @@ struct Home: View {
                         .fontWeight(.black)
                         .foregroundColor(Color("G1"))
                 }
+                
+            }
+            .frame(height: size.height * 0.8)
+            Indicators()
+        }
+    }
+    //MARK: Indicator
+    @ViewBuilder
+    func Indicators()-> some View{
+        HStack(spacing: 2){
+            ForEach(milkShakes.indices,id: \.self){index in
+                Circle()
+                    .fill(Color("G1"))
             }
         }
     }
