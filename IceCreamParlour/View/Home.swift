@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Home: View {
+    //MARK: View Property
+    @State var currentIndex: Int = 0
+    
     var body: some View {
         ZStack{
            
@@ -23,11 +26,31 @@ struct Home: View {
                 }
                 .padding(.horizontal,15)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                GeometryReader{proxy in
+                    let size = proxy.size
+                    CarouselView(size: size)
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
           
         }
     }
+    //MARK: CustomCarousel
+    @ViewBuilder
+    func CarouselView(size: CGSize)->some View {
+        VStack{
+            CustomCarousel(index: $currentIndex, items: milkShakes, spacing: 0, cardPadding: size.width / 3, id: \.id) { milkshake, size in
+                 
+                VStack(spacing: 10){
+                    Image(milkshake.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
+        }
+    }
+    
+    //MARK: Header view
     @ViewBuilder
     func HeaderView()->some View{
         HStack{

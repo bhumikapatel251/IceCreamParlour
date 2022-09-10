@@ -8,7 +8,7 @@
 import SwiftUI
 
 //MARK: Model and sample data
-struct MilkShake: Identifiable, Hashable {
+struct MilkShake: Identifiable, Hashable,Equatable {
     var id: String = UUID().uuidString
     var title: String
     var price: String

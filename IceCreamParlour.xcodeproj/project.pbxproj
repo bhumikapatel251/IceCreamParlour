@@ -17,6 +17,7 @@
 		AC2F462628C9C96900C61617 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F462528C9C96900C61617 /* Home.swift */; };
 		AC2F462928C9CC4B00C61617 /* MilkShake.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F462828C9CC4B00C61617 /* MilkShake.swift */; };
 		AC4A229628C9FE800069F632 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4A229528C9FE800069F632 /* Tab.swift */; };
+		ACC949F828CB1090009F6130 /* CustomCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC949F728CB1090009F6130 /* CustomCarousel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		AC2F462528C9C96900C61617 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		AC2F462828C9CC4B00C61617 /* MilkShake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilkShake.swift; sourceTree = "<group>"; };
 		AC4A229528C9FE800069F632 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		ACC949F728CB1090009F6130 /* CustomCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCarousel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		AC4A229728C9FFDA0069F632 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ACC949F728CB1090009F6130 /* CustomCarousel.swift */,
 				AC2F462528C9C96900C61617 /* Home.swift */,
 			);
 			path = View;
@@ -284,6 +287,7 @@
 			files = (
 				AC2F45FE28C9C92700C61617 /* ContentView.swift in Sources */,
 				AC2F462628C9C96900C61617 /* Home.swift in Sources */,
+				ACC949F828CB1090009F6130 /* CustomCarousel.swift in Sources */,
 				AC4A229628C9FE800069F632 /* Tab.swift in Sources */,
 				AC2F45FC28C9C92700C61617 /* IceCreamParlourApp.swift in Sources */,
 				AC2F462928C9CC4B00C61617 /* MilkShake.swift in Sources */,
