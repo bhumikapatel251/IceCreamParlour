@@ -73,8 +73,31 @@ struct Home: View {
         .background{
            CustomArcShape()
                 .fill(Color.white)
+                .overlay(alignment: .topLeading, content: {
+                    TabMenu()
+                })
                 .padding(.top,40)
                 .ignoresSafeArea()
+        }
+    }
+    //MARK: Custome tabmenu
+    @ViewBuilder
+    func TabMenu()->some View{
+        HStack(spacing: 30){
+            ForEach(tabs){tab in
+                Image(tab.tabName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 40, height: 40)
+                    .padding(10)
+                    .background{
+                        Circle()
+                            .fill(Color("G1"))
+                        
+                    }
+                //MARK: I already pre-defined the offsets to make them look like Circular
+                    .offset(tab.tabOffset)
+            }
         }
     }
     //MARK: Indicator
