@@ -38,7 +38,7 @@ struct Home: View {
     //MARK: CustomCarousel
     @ViewBuilder
     func CarouselView(size: CGSize)->some View {
-        VStack{
+        VStack(spacing: -40){
             CustomCarousel(index: $currentIndex, items: milkShakes, spacing: 0, cardPadding: size.width / 3, id: \.id) { milkshake, _ in
                  // MARK: previous Issue
                 VStack(spacing: 10){
@@ -88,17 +88,19 @@ struct Home: View {
                 Image(tab.tabName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
+                    .frame(width: 40, height: 50)
                     .padding(10)
                     .background{
                         Circle()
                             .fill(Color("G1"))
-                        
+                            
                     }
                 //MARK: I already pre-defined the offsets to make them look like Circular
                     .offset(tab.tabOffset)
             }
+           
         }
+        .padding(15)
     }
     //MARK: Indicator
     @ViewBuilder

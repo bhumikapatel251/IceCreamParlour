@@ -14,8 +14,8 @@ struct Tab:Identifiable{
     var tabOffset: CGSize
 }
 var tabs: [Tab] = [
-    .init(tabImage: "Cold Stone Creamery", tabName: "Cold Stone Creamery", tabOffset: CGSize(width: 0, height: -40)),
-    .init(tabImage: "CookiesBar", tabName: "CookiesBar", tabOffset: CGSize(width: 0, height: -38)),
-    .init(tabImage: "DoubleSaltedCaramel", tabName: "DoubleSaltedCaramel", tabOffset: CGSize(width: 0, height: -25)),
-    .init(tabImage: "Vanilla Cone", tabName: "Vanilla Cone", tabOffset: CGSize(width: -12, height: -28))
+    .init(tabImage: "Cold Stone Creamery", tabName: "Cold Stone Creamery", tabOffset: CGSize(width: 0, height: -50)),
+    .init(tabImage: "CookiesBar", tabName: "CookiesBar", tabOffset: CGSize(width: 0, height: -48)),
+    .init(tabImage: "DoubleSaltedCaramel", tabName: "DoubleSaltedCaramel", tabOffset: CGSize(width: 0, height: -35)),
+    .init(tabImage: "Vanilla Cone", tabName: "Vanilla Cone", tabOffset: CGSize(width: -12, height: 8))
 ]
