@@ -67,6 +67,12 @@ struct Home: View {
             .frame(height: size.height * 0.8)
             Indicators()
         }
+        .frame(width: size.width, height: size.height, alignment: .bottom)
+        .padding(.bottom,8)
+        //MARK: Custom Arc background
+        .background{
+           CustomArcShape()
+        }
     }
     //MARK: Indicator
     @ViewBuilder
