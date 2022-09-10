@@ -39,12 +39,28 @@ struct Home: View {
     @ViewBuilder
     func CarouselView(size: CGSize)->some View {
         VStack{
-            CustomCarousel(index: $currentIndex, items: milkShakes, spacing: 0, cardPadding: size.width / 3, id: \.id) { milkshake, size in
-                 
+            CustomCarousel(index: $currentIndex, items: milkShakes, spacing: 0, cardPadding: size.width / 3, id: \.id) { milkshake, _ in
+                 // MARK: previous Issue
                 VStack(spacing: 10){
                     Image(milkshake.image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .rotationEffect(.init(degrees: -2))
+                        .background{
+                            RoundedRectangle(cornerRadius: size.height / 10, style: .continuous)
+                                .fill(Color("G1"))
+                                .padding(.top,40)
+                                .padding(.horizontal,-40)
+                                .offset(y: -10)
+                        }
+                    Text(milkshake.title)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                        .padding(.top,8)
+                    Text(milkshake.price)
+                        .font(.callout)
+                        .fontWeight(.black)
+                        .foregroundColor(Color("G1"))
                 }
             }
         }
