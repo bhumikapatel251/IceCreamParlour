@@ -96,6 +96,12 @@ struct Home: View {
                             .fill(Color("G1"))
                             
                     }
+                    .background(content: {
+                        Circle()
+                            .fill(.white)
+                            .padding(-2)
+                    })
+                    .shadow(color: .black.opacity(0.07), radius: 5, x: 5, y: 5)
                 //MARK: I already pre-defined the offsets to make them look like Circular
                     .offset(tab.tabOffset)
                     .scaleEffect(currentTab.id == tab.id ? 1.15 : 0.9, anchor: .bottom)
