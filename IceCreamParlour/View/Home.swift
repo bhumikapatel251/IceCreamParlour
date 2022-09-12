@@ -67,6 +67,7 @@ struct Home: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .rotationEffect(.init(degrees: -2))
+                                .opacity(0)
                         }else{
                             Image(milkshake.image)
                                 .resizable()
@@ -256,6 +257,7 @@ struct DetailView: View {
     
     //MARK: View property
     @State var orderType: String = "Active Order"
+    @State var showContent: Bool = false
     var body: some View {
         VStack{
             HStack{
@@ -277,6 +279,8 @@ struct DetailView: View {
                     .fontWeight(.semibold)
             }
             .padding(.top, 7)
+            .opacity(showContent ? 1 : 0)
+            
             HStack(spacing: 0){
                 ForEach(["Active Order", "PastOrder"],id: \.self){order in
                     Text(order)
@@ -301,15 +305,24 @@ struct DetailView: View {
             .padding(.leading,15)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom)
+            .opacity(showContent ? 1 : 0)
             
             Image(milkShake.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .rotationEffect(.init(degrees: -2))
                 .matchedGeometryEffect(id: milkShake.id, in: animation)
+            GeometryReader{proxy in
             
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .transition(.asymmetric(insertion: .identity, removal: .offset(y: 0.5)))
+        .onAppear{
+            withAnimation(.easeInOut.delay(0.1)){
+            showContent = true
+            }
+        }
     }
 }
 
