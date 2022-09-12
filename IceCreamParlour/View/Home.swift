@@ -263,7 +263,12 @@ struct DetailView: View {
             HStack{
                 Button{
                     withAnimation(.easeInOut(duration: 0.35)){
-                        show = false
+                        showContent = false
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                        withAnimation(.easeInOut(duration: 0.35)){
+                            show = false
+                        }
                     }
                 } label: {
                     Image(systemName: "arrow.left")
@@ -349,7 +354,7 @@ struct DetailView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.gray)
                 HStack(spacing: 12){
-                    Image("Quantity: ")
+                    Text("Quantity: ")
                         .font(.callout.bold())
                     
                     Button{
