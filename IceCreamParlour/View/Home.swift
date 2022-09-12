@@ -12,6 +12,9 @@ struct Home: View {
     @State var currentIndex: Int = 0
     @Namespace var animation
     @State var currentTab: Tab = tabs[1]
+    //MARK: detail view property
+    @State var selectedMilkShake: MilkShake?
+    @State var showDetail: Bool = false
     var body: some View {
         ZStack{
            
@@ -27,13 +30,27 @@ struct Home: View {
                 }
                 .padding(.horizontal,15)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .opacity(showDetail ? 0 : 1)
                 GeometryReader{proxy in
                     let size = proxy.size
                     CarouselView(size: size)
                 }
+                .zIndex(-10)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-          
+            .overlay(content: {
+                if let selectedMilkShake1 = selectedMilkShake, showDetail {
+                    DetailView(animation: animation, milkShake: selectedMilkShake1  , show: $showDetail)
+                    
+                } else {
+                    
+                }
+            })
+//            .overlay(content: {
+//                if let selectedMilkShake,showDetail{
+//                    DetailView(animation: animation, milkShake: selectedMilkShake, show: $showDetail)
+//                }
+//            })
         }
     }
     //MARK: CustomCarousel
@@ -43,10 +60,21 @@ struct Home: View {
             CustomCarousel(index: $currentIndex, items: milkShakes, spacing: 0, cardPadding: size.width / 3, id: \.id) { milkshake, _ in
                  // MARK: previous Issue
                 VStack(spacing: 10){
-                    Image(milkshake.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .rotationEffect(.init(degrees: -2))
+                    //MARK: Applying matched geometry
+                    ZStack{
+                        if showDetail && selectedMilkShake?.id == milkshake.id{
+                            Image(milkshake.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .rotationEffect(.init(degrees: -2))
+                        }else{
+                            Image(milkshake.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .rotationEffect(.init(degrees: -2))
+                                .matchedGeometryEffect(id: milkshake.id, in: animation)
+                        }
+                    }
                         .background{
                             RoundedRectangle(cornerRadius: size.height / 10, style: .continuous)
                                 .fill(Color("G1"))
@@ -63,6 +91,14 @@ struct Home: View {
                         .fontWeight(.black)
                         .foregroundColor(Color("G2"))
                 }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)){
+                        selectedMilkShake = milkshake
+                        showDetail = true
+                        
+                    }
+                }
                 
             }
             .frame(height: size.height * 0.8)
@@ -70,15 +106,19 @@ struct Home: View {
         }
         .frame(width: size.width, height: size.height, alignment: .bottom)
         .padding(.bottom,8)
+        .opacity(showDetail ? 0 : 1)
         //MARK: Custom Arc background
         .background{
            CustomArcShape()
                 .fill(Color.white)
+                .scaleEffect(showDetail ? 1.8 : 1, anchor: .bottomLeading)
                 .overlay(alignment: .topLeading, content: {
                     TabMenu()
+                        .opacity(showDetail ? 0 : 1)
                 })
                 .padding(.top,40)
                 .ignoresSafeArea()
+               // .zIndex(-10)
         }
     }
     //MARK: Custome tabmenu
@@ -161,6 +201,8 @@ struct Home: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            .opacity(showDetail ? 0 : 1)
+            //MARK: going to same button  for home view
             Button{
                 
             } label: {
@@ -207,3 +249,67 @@ struct Home_Previews: PreviewProvider {
         Home()
     }
 }
+struct DetailView: View {
+    var animation: Namespace.ID
+    var milkShake: MilkShake
+    @Binding var show: Bool
+    
+    //MARK: View property
+    @State var orderType: String = "Active Order"
+    var body: some View {
+        VStack{
+            HStack{
+                Button{
+                    withAnimation(.easeInOut(duration: 0.35)){
+                        show = false
+                    }
+                } label: {
+                    Image(systemName: "arrow.left")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .padding(15)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .overlay{
+                Text("Details")
+                    .font(.callout)
+                    .fontWeight(.semibold)
+            }
+            .padding(.top, 7)
+            HStack(spacing: 0){
+                ForEach(["Active Order", "PastOrder"],id: \.self){order in
+                    Text(order)
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(orderType == order ? .black : .gray)
+                        .padding(.horizontal,20)
+                        .padding(.vertical,10)
+                        .background{
+                            if orderType == order{
+                                Capsule()
+                                    .fill(Color("G1"))
+                                    .matchedGeometryEffect(id: "ORDERTAB", in: animation)
+                            }
+                        }
+                        .onTapGesture {
+                            withAnimation(.easeInOut){orderType = order}
+                        }
+                    
+                }
+                
+            }
+            .padding(.leading,15)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom)
+            
+            Image(milkShake.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .rotationEffect(.init(degrees: -2))
+                .matchedGeometryEffect(id: milkShake.id, in: animation)
+            
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+    }
+}
+
