@@ -313,7 +313,8 @@ struct DetailView: View {
                 .rotationEffect(.init(degrees: -2))
                 .matchedGeometryEffect(id: milkShake.id, in: animation)
             GeometryReader{proxy in
-            
+                let size = proxy.size
+                IceCreamDetail()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -323,6 +324,77 @@ struct DetailView: View {
             showContent = true
             }
         }
+    }
+    // Custome bottom sheet
+    @ViewBuilder
+    func IceCreamDetail()->some View{
+        VStack{
+            VStack(spacing: 12){
+                Text("#512D Code")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.black)
+                
+                Text(milkShake.title)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                
+                Text(milkShake.price)
+                    .font(.callout)
+                    .fontWeight(.black)
+                    .foregroundColor(Color("G2"))
+                Text("20min delivery")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.gray)
+                HStack(spacing: 12){
+                    Image("Quantity: ")
+                        .font(.callout.bold())
+                    
+                    Button{
+                        
+                    } label: {
+                        Image(systemName: "minus")
+                            .font(.title3)
+                        
+                    }
+                    Text("\(2)")
+                        .font(.title3)
+                    
+                    Button{
+                        
+                    } label: {
+                       Image(systemName: "plus")
+                            .font(.title3)
+                    }
+                }
+                .foregroundColor(.gray)
+                Button{
+                    
+                } label: {
+                    Text("Add to Cart")
+                        .font(.callout)
+                        .fontWeight(.semibold)
+                        .padding(.horizontal,25)
+                        .padding(.vertical,10)
+                        .foregroundColor(.black)
+                        .background{
+                            Capsule()
+                                .fill(Color("G2"))
+                        }
+                }
+                .padding(.top,10)
+            }
+            .padding(.vertical,20)
+            .frame(maxWidth:.infinity)
+            .background{
+                RoundedRectangle(cornerRadius: 40, style: .continuous)
+                    .fill(Color("G1"))
+            }
+            .padding(.horizontal,60)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
